@@ -1,0 +1,29 @@
+.charactersContainer {
+  position: relative;
+  display: flex;
+  gap: 2rem;
+
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    //webkit based browsers
+    display: none;
+  }
+  -ms-overflow-style: none; //ie and edge
+  scrollbar-width: none;
+
+  @media screen and (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1.5rem;
+    grid-auto-columns: 1fr;
+  }
+
+  @media screen and (min-width: 920px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media screen and (min-width: 1400px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

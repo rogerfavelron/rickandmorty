@@ -1,0 +1,49 @@
+@import "../../variables.scss";
+
+.menu {
+  display: flex;
+  flex-flow: column nowrap;
+  margin-bottom: 1rem;
+
+  .top {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+
+    & > a {
+      text-decoration: underline;
+    }
+  }
+
+  .filters {
+    display: flex;
+    flex-flow: row nowrap;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    &::-webkit-scrollbar {
+      //webkit based browsers
+      display: none;
+    }
+    -ms-overflow-style: none; //ie and edge
+    scrollbar-width: none;
+
+    .option {
+      padding: 1rem 2.25rem;
+      border-radius: 0.5rem;
+      border: 1px solid black;
+      background-color: inherit;
+      cursor: pointer;
+
+      &:not(:last-child) {
+        margin-right: 1rem;
+      }
+
+      &.active {
+        background-color: $dark-gray;
+        color: white;
+        border: none;
+      }
+    }
+  }
+}

@@ -1,5 +1,3 @@
-import { redirect } from "next/navigation";
-
 import styles from "./locations.module.scss";
 import Location from "../_components/Location";
 import Pagination from "../_components/Pagination";
@@ -27,10 +25,6 @@ const Locations = async ({
   );
   const res = await locationsData.json();
 
-  const onPageChange = (newPage: number) => {
-    redirect(`locations?page=${newPage}`);
-  };
-
   return (
     <main className={styles.main}>
       <div className={styles.locationWrapper}>
@@ -38,6 +32,7 @@ const Locations = async ({
           return (
             <Location
               id={location.id}
+              key={location.id}
               name={location.name}
               type={location.type}
               dimension={location.dimension}

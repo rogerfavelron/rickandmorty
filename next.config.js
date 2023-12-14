@@ -22,6 +22,14 @@ const nextConfig = {
 
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "rickandmortyapi.com",
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;

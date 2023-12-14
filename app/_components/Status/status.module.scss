@@ -1,0 +1,31 @@
+@import "../../variables.scss";
+
+.status {
+  list-style: none;
+
+  & > li {
+    display: flex;
+    align-items: center;
+    flex-flow: row nowrap;
+    &::before {
+      display: inline-block;
+      content: "";
+      -webkit-border-radius: 50%;
+      border-radius: 50%;
+      height: 1rem;
+      width: 1rem;
+      margin-right: 0.5rem;
+    }
+
+    &.alive::before {
+      background-color: $green;
+    }
+
+    &.dead::before {
+      background-color: $red;
+    }
+    &.unknown::before {
+      background-color: $light-gray;
+    }
+  }
+}

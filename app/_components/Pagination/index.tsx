@@ -1,18 +1,23 @@
 "use client";
+
 import React from "react";
-import { useRouter, usePathname } from "next/navigation";
 import ReactPaginate from "react-paginate";
+import { useQueryState } from "next-usequerystate";
 import styles from "./pagination.module.scss";
 
 import type { PaginationType } from "./types";
 
-export default function Pagination({ pageCount }: PaginationType) {
-  const router = useRouter();
-  const pathname = usePathname();
+export default function Pagination({ pageCount, initialPage }: PaginationType) {
+  const [page, setPage] = useQueryState("page", {
+    shallow: false,
+    parse: Number,
+  });
+
+  const currentPage = initialPage || page || 1;
 
   const handlePageClick = (event: { selected: number }) => {
     const newPage = event.selected + 1;
-    router.push(`${pathname}?page=${newPage}`);
+    setPage(newPage);
   };
 
   return (
@@ -29,6 +34,7 @@ export default function Pagination({ pageCount }: PaginationType) {
         activeClassName={styles.active}
         disabledClassName={styles.disabled}
         containerClassName={styles.pagination}
+        forcePage={currentPage - 1}
       />
     </div>
   );

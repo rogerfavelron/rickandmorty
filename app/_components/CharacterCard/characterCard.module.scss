@@ -1,0 +1,52 @@
+@import "../../variables.scss";
+
+.card {
+  width: 300px;
+  .imageContainer {
+    position: relative;
+    width: 300px;
+    height: 300px;
+
+    .heart {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.75rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      z-index: 2;
+      background-color: inherit;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  .info {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+
+    .left {
+      .name {
+        font-size: 1.5rem;
+        color: $dark-gray;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+        padding-right: 0.5rem;
+      }
+      .statusContainer {
+        display: flex;
+        gap: 0.25rem;
+      }
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 400px;
+    .imageContainer {
+      width: 400px;
+      height: 400px;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+.location {
+  display: flex;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid black;
+  cursor: pointer;
+
+  .info {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 90%;
+
+    .infoRow {
+      display: flex;
+      width: 100%;
+
+      & > :first-child {
+        font-weight: bold;
+        margin-right: 0.5rem;
+      }
+      & > * {
+        width: 50%;
+      }
+
+      @media screen and (min-width: 1024px) {
+        & > :first-child {
+          width: 30%;
+        }
+        & > :last-child {
+          width: 70%;
+        }
+      }
+    }
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+  }
+}

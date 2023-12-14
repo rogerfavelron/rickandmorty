@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../../store";
 
-interface Location {
+export interface Location {
   id: number;
   name: string;
   type: string;
   dimension: string;
-  residents: [string];
+  residents: Array<string>;
   // we need to modify the api data and convert resident links to ids
 }
 
@@ -19,7 +19,57 @@ interface locationState {
 // Define the initial state using that type
 const initialState: locationState = {
   currentLocationId: undefined,
-  list: [],
+  list: [
+    {
+      id: 3,
+      name: "333luffy",
+      type: "momo",
+      dimension: "lala",
+      residents: ["aa", "bb"],
+    },
+    {
+      id: 4,
+      name: "444luffy",
+      type: "momo",
+      dimension: "lala",
+      residents: ["aa", "bb"],
+    },
+    {
+      id: 5,
+      name: "555luffy",
+      type: "momo",
+      dimension: "lala",
+      residents: ["aa", "bb"],
+    },
+    {
+      id: 6,
+      name: "666luffy",
+      type: "momo",
+      dimension: "lala",
+      residents: ["aa", "bb"],
+    },
+    {
+      id: 7,
+      name: "777luffy",
+      type: "momo",
+      dimension: "lala",
+      residents: ["aa", "bb"],
+    },
+    {
+      id: 8,
+      name: "888luffy",
+      type: "momo",
+      dimension: "lala",
+      residents: ["aa", "bb"],
+    },
+    {
+      id: 9,
+      name: "999luffy",
+      type: "momo",
+      dimension: "lala",
+      residents: ["aa", "bb"],
+    },
+  ],
 };
 
 export const locationSlice = createSlice({

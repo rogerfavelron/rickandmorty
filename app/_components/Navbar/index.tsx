@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import styles from "./Navbar.module.scss";
+import styles from "./navbar.module.scss";
 
 import BackButtonIcon from "../../../public/back-button.svg";
 
@@ -18,6 +18,7 @@ const Navbar = ({ backButton }: NavbarType) => {
           width={240}
           height={70}
           alt="Rick and Morty logo"
+          priority={true}
         />
       </span>
     </nav>

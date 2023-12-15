@@ -1,0 +1,30 @@
+.page {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+
+  .main {
+    margin-bottom: 4rem;
+  }
+
+  .others {
+    .title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    .miniCards {
+      & > *:not(:last-child) {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    .main {
+      margin-right: 8rem;
+    }
+  }
+}

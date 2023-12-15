@@ -20,6 +20,10 @@
     }
   }
 
+  .unclickable {
+    pointer-events: none;
+  }
+
   .info {
     display: flex;
     flex-flow: row nowrap;
@@ -39,6 +43,22 @@
         display: flex;
         gap: 0.25rem;
       }
+
+      & > span:not(:last-child) {
+        margin-bottom: 0.5rem;
+      }
+    }
+    .origin {
+      font-size: 1rem;
+      font-style: italic;
+    }
+
+    .detailRight {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-style: italic;
     }
   }
 
@@ -47,6 +67,32 @@
     .imageContainer {
       width: 400px;
       height: 400px;
+    }
+  }
+}
+
+.miniCard {
+  display: flex;
+  flex-flow: row nowrap;
+  .imageContainer {
+    height: 80px;
+    width: 80px;
+  }
+
+  .info {
+    padding: 0 0 0 0.5rem;
+    flex-flow: column nowrap;
+    height: 100%;
+    .left {
+      display: flex;
+      flex-flow: column nowrap;
+      .name {
+        font-size: 1.25rem;
+        margin: 0 !important;
+      }
+    }
+    .miniRight {
+      font-style: italic;
     }
   }
 }

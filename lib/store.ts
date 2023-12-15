@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import locationReducer from "./features/location/locationSlice";
+import favoriteReducer from "./features/favorite/favoriteSlice";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
-      location: locationReducer,
+      favorite: favoriteReducer,
     },
   });
 };

@@ -20,8 +20,18 @@
     }
   }
 
-  .unclickable {
+  .fullDetailInfoWrapper {
     pointer-events: none;
+    .info {
+      .left {
+        max-width: 180px;
+      }
+      @media screen and (min-width: 1200px) {
+        .left {
+          max-width: 280px;
+        }
+      }
+    }
   }
 
   .info {
@@ -31,11 +41,13 @@
     padding-top: 0.5rem;
 
     .left {
+      max-width: 250px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
       .name {
         font-size: 1.5rem;
         color: $dark-gray;
-        overflow: hidden;
-        text-overflow: ellipsis;
         text-wrap: nowrap;
         padding-right: 0.5rem;
       }

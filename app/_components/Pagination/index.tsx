@@ -3,6 +3,10 @@
 import React from "react";
 import ReactPaginate from "react-paginate";
 import { useQueryState } from "next-usequerystate";
+
+import RightArrow from "../../../public/right-arrow.svg";
+import LeftArrow from "../../../public/left-arrow.svg";
+
 import styles from "./pagination.module.scss";
 
 import type { PaginationType } from "./types";
@@ -24,12 +28,12 @@ export default function Pagination({ pageCount, initialPage }: PaginationType) {
     <div className={styles.pagination_container}>
       <ReactPaginate
         breakLabel="..."
-        nextLabel="next >"
+        nextLabel={<RightArrow />}
         onPageChange={handlePageClick}
         marginPagesDisplayed={0}
         pageRangeDisplayed={2}
         pageCount={pageCount}
-        previousLabel="< previous"
+        previousLabel={<LeftArrow />}
         renderOnZeroPageCount={null}
         activeClassName={styles.active}
         disabledClassName={styles.disabled}

@@ -8,29 +8,53 @@ import styles from "./characterCard.module.scss";
 
 import Status from "../Status";
 
+import { useCustomSelector, useAppDispatch } from "@/lib/hooks";
+import { isCharacterFavorited } from "@/lib/features/favorite/favoriteSlice";
+
 import Heart from "../../../public/heart.svg";
 import RightArrow from "../../../public/right-arrow.svg";
+import {
+  addFavorite,
+  removeFavorite,
+} from "@/lib/features/favorite/favoriteSlice";
 
 import type { CharacterCardType } from "./types";
+import type { RootState } from "@/lib/store";
 
-const CharacterCard = ({
-  mini,
-  fullDetail,
-  id,
-  name,
-  status,
-  species,
-  type,
-  gender,
-  origin,
-  image,
-}: CharacterCardType) => {
+const CharacterCard = (props: CharacterCardType) => {
+  const {
+    mini,
+    fullDetail,
+    id,
+    name,
+    status,
+    species,
+    type,
+    gender,
+    origin,
+    image,
+  } = props;
+
+  const dispatch = useAppDispatch();
+  const isFavorited = useCustomSelector((state: RootState) =>
+    isCharacterFavorited(state, id)
+  );
+
+  const favoriteHandler = () => {
+    if (mini) return;
+    if (isFavorited) {
+      dispatch(removeFavorite(id));
+    } else {
+      dispatch(addFavorite({ ...props }));
+    }
+  };
+
   return (
     <div className={cn(styles.card, mini && styles.miniCard)}>
-      <div className={styles.imageContainer}>
+      <div className={styles.imageContainer} onClick={favoriteHandler}>
         {!mini && (
           <button className={styles.heart}>
-            <Heart color="#ffffff" />
+            <Heart color={isFavorited ? "#d90429" : "#ffffff"} />
           </button>
         )}
         <Image
@@ -42,9 +66,9 @@ const CharacterCard = ({
       </div>
       <Link
         href={`/characters/${id}`}
-        className={cn(fullDetail && styles.unclickable)}
+        className={cn(fullDetail && styles.fullDetailInfoWrapper)}
       >
-        <div className={styles.info}>
+        <div className={cn(styles.info, fullDetail && styles.fullDetailInfo)}>
           <div className={styles.left}>
             <span className={styles.name}>{name}</span>
             {!mini && (

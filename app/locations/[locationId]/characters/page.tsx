@@ -36,20 +36,22 @@ const Characters = async ({
   });
 
   //We need to fetch all characters to be able to filter
-  const charactersData = await fetch(
-    `${process.env.API_URL}/character/${allCharacterIds.join(",")},`,
-    {
-      cache: "force-cache",
-    }
-  );
-  const charactersResponse = await charactersData.json();
+  let charactersResponse = [];
+  if (allCharacterIds.length > 0) {
+    const charactersData = await fetch(
+      `${process.env.API_URL}/character/${allCharacterIds.join(",")}`,
+      {
+        cache: "force-cache",
+      }
+    );
+    charactersResponse = await charactersData.json();
+  }
 
   let filteredCharacters = charactersResponse;
-  //This value is required for the pagination component
 
   if (status) {
     filteredCharacters = filteredCharacters.filter(
-      (c: CharacterApiResponseType) => c.status === status
+      (c: CharacterApiResponseType) => c.status.toLocaleLowerCase() === status
     );
     //Reduce the page count to reach the correct one
     while ((page - 1) * CUSTOM_PAGE_SIZE > filteredCharacters.length) {
@@ -59,10 +61,12 @@ const Characters = async ({
 
   const pageCount = Math.ceil(filteredCharacters.length / CUSTOM_PAGE_SIZE);
 
-  const slicedCharacters = filteredCharacters.slice(
-    (page - 1) * CUSTOM_PAGE_SIZE,
-    page * CUSTOM_PAGE_SIZE
-  );
+  debugger;
+  const slicedCharacters =
+    filteredCharacters?.slice(
+      (page - 1) * CUSTOM_PAGE_SIZE,
+      page * CUSTOM_PAGE_SIZE
+    ) || [];
 
   return (
     <main className={styles.mainContainer}>

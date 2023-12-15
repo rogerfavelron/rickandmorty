@@ -1,0 +1,9 @@
+.main {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+
+  & > *:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+}

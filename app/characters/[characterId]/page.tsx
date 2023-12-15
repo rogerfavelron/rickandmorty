@@ -35,13 +35,16 @@ const Character = async ({ params }: { params: { characterId: string } }) => {
   });
 
   //We need to fetch all characters to be able to filter by status
-  const charactersData = await fetch(
-    `${process.env.API_URL}/character/${allCharacterIds.join(",")}`,
-    {
-      cache: "force-cache",
-    }
-  );
-  const charactersResponse = await charactersData.json();
+  let charactersResponse = [];
+  if (allCharacterIds.length > 0) {
+    const charactersData = await fetch(
+      `${process.env.API_URL}/character/${allCharacterIds.join(",")}`,
+      {
+        cache: "force-cache",
+      }
+    );
+    charactersResponse = await charactersData.json();
+  }
 
   let filteredCharacters = charactersResponse.filter(
     (c: CharacterApiResponseType) => c.status === status && c.id !== characterId

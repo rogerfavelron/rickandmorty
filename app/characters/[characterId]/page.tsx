@@ -44,6 +44,8 @@ const Character = async ({ params }: { params: { characterId: string } }) => {
       }
     );
     charactersResponse = await charactersData.json();
+    if (!Array.isArray(charactersResponse))
+      charactersResponse = [charactersResponse];
   }
 
   let filteredCharacters = charactersResponse.filter(
@@ -64,7 +66,7 @@ const Character = async ({ params }: { params: { characterId: string } }) => {
           <div className={styles.title}>Other Characters</div>
           <div className={styles.miniCards}>
             {filteredCharacters.map((c: CharacterApiResponseType) => (
-              <CharacterCard {...c} mini />
+              <CharacterCard {...c} mini key={c.id} />
             ))}
           </div>
         </div>

@@ -45,6 +45,8 @@ const Characters = async ({
       }
     );
     charactersResponse = await charactersData.json();
+    if (!Array.isArray(charactersResponse))
+      charactersResponse = [charactersResponse];
   }
 
   let filteredCharacters = charactersResponse;

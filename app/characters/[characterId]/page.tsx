@@ -10,7 +10,7 @@ const Character = async ({ params }: { params: { characterId: string } }) => {
   const characterId = Number(params.characterId);
 
   const characterData = await fetch(
-    `${process.env.API_URL}/character/${characterId}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/character/${characterId}`,
     {
       cache: "force-cache",
     }
@@ -22,7 +22,7 @@ const Character = async ({ params }: { params: { characterId: string } }) => {
 
   //We need to find two other characters from the same location with same status
   const locationData = await fetch(
-    `${process.env.API_URL}/location/${locationId}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/location/${locationId}`,
     {
       cache: "force-cache",
     }
@@ -38,7 +38,9 @@ const Character = async ({ params }: { params: { characterId: string } }) => {
   let charactersResponse = [];
   if (allCharacterIds.length > 0) {
     const charactersData = await fetch(
-      `${process.env.API_URL}/character/${allCharacterIds.join(",")}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/character/${allCharacterIds.join(
+        ","
+      )}`,
       {
         cache: "force-cache",
       }

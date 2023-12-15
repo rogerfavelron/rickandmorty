@@ -22,7 +22,7 @@ const Characters = async ({
   const status = searchParams?.status;
 
   const locationData = await fetch(
-    `${process.env.API_URL}/location/${locationId}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/location/${locationId}`,
     {
       cache: "force-cache",
     }
@@ -39,7 +39,9 @@ const Characters = async ({
   let charactersResponse = [];
   if (allCharacterIds.length > 0) {
     const charactersData = await fetch(
-      `${process.env.API_URL}/character/${allCharacterIds.join(",")}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/character/${allCharacterIds.join(
+        ","
+      )}`,
       {
         cache: "force-cache",
       }

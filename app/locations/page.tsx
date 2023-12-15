@@ -18,7 +18,7 @@ const Locations = async ({
   const page = Number(searchParams?.page) || 1;
 
   const locationsData = await fetch(
-    `${process.env.API_URL}/location/?page=${page}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/location/?page=${page}`,
     {
       cache: "force-cache",
     }

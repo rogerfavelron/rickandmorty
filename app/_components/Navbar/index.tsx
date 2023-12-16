@@ -18,7 +18,7 @@ const Navbar = () => {
   return (
     <nav className={styles.nav}>
       <span className={styles.backButton} onClick={handleClick}>
-        {pathname !== "/locations" && <BackButtonIcon />}
+        {!(pathname === "/locations" || pathname === "/") && <BackButtonIcon />}
       </span>
       <span className={styles.logo}>
         <Image

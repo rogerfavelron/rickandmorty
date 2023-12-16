@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className={styles.container}>
-          <Navbar backButton={true} />
+          <Navbar />
           <StoreProvider>{children}</StoreProvider>
         </div>
       </body>

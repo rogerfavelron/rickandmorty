@@ -2,22 +2,23 @@
 
 import React from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import styles from "./navbar.module.scss";
 
 import BackButtonIcon from "../../../public/back-button.svg";
 
-import type { NavbarType } from "./types";
-
-const Navbar = ({ backButton }: NavbarType) => {
+const Navbar = () => {
   const router = useRouter();
+  const pathname = usePathname();
+
   const handleClick = () => {
     router.back();
   };
+
   return (
     <nav className={styles.nav}>
       <span className={styles.backButton} onClick={handleClick}>
-        {backButton && <BackButtonIcon />}
+        {pathname !== "/locations" && <BackButtonIcon />}
       </span>
       <span className={styles.logo}>
         <Image
